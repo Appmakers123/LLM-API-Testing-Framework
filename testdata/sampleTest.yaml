@@ -1,0 +1,109 @@
+openapi: 3.0.3
+info:
+  title: Restful API DEV
+  description: Sample API to get, create, and update objects with flexible JSON data.
+  version: 1.0.0
+servers:
+  - url: https://api.restful-api.dev
+paths:
+  /objects/{id}:
+    get:
+      summary: Get object by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the object to fetch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful object fetch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+        '404':
+          description: Object not found
+    put:
+      summary: Update object by ID
+      description: |
+        Updates an existing object by ID. Note: Some IDs are reserved and cannot be updated (e.g., id=6).
+      parameters:
+        - name: id
+          in: path
+          description: ID of the object to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Object to update with complete data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectCreateUpdate'
+      responses:
+        '200':
+          description: Object updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+        '400':
+          description: Invalid request or reserved ID update not allowed
+  /objects:
+    post:
+      summary: Create a new object
+      requestBody:
+        description: Object to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectCreateUpdate'
+      responses:
+        '201':
+          description: Object created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+components:
+  schemas:
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique ID of the object
+        name:
+          type: string
+          description: Name of the object
+        data:
+          type: object
+          description: Custom JSON data attributes
+          additionalProperties: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last update timestamp
+      required:
+        - id
+        - name
+    ObjectCreateUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the object
+        data:
+          type: object
+          description: Custom JSON data attributes
+          additionalProperties: true
+      required:
+        - name
