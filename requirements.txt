@@ -1,0 +1,8 @@
+streamlit
+requests
+pandas
+PyMuPDF
+python-docx
+pyyaml
+langchain-perplexity
+tornado
