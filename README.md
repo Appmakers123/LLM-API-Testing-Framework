@@ -35,13 +35,19 @@ LLM-API-Testing/
 │── config.py # Configurations (⚠️ don't commit secrets!)
 
 │── requirements.txt # Python dependencies
+
 │── README.md # Project documentation
+
 ├── openapi/ # OpenAPI loaders & helpers
+
 ├── tests/ # Test generators & executors
+
 ├── knowledgebase/ # Knowledge base loader
 
 ├── utils/ # Utility functions (file/text handling)
+
 ├── reports/ # Test execution CSV reports
+
 └── testdata/ # API spec YAML/JSON files
 
 
@@ -64,6 +70,7 @@ Run with CLI
 
 ```bash
   python main.py --run-tests
+
 
 
 ```
