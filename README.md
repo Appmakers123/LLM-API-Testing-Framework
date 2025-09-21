@@ -18,7 +18,7 @@ It generates test cases (headers, parameters, body validation, security checks, 
   - Headers
   - Parameters
   - Body schema (required, types, enums, boundaries, combinations)
-  - Security checks (e.g., `x-session-token`)  
+  - Security checks (e.g., `token`)  
 - 🤖 LLM Validation (via [Perplexity API](https://docs.perplexity.ai))  
 - 📊 CSV reports with pass/fail results  
 - 💬 Knowledge Base Chat (ask questions against docs/PDFs)  
@@ -74,3 +74,4 @@ Run with CLI
 
 
 ```
+
