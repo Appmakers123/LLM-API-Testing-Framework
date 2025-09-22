@@ -7,7 +7,7 @@ import json
 from config import CSV_OUTPUT, KNOWLEDGE_FOLDER, OPENAPI_YAML_PATH
 from openapi.loader import load_openapi, pick_base_url
 from openapi.operations import collect_operations
-import streamlit as st
+
 my_key = st.secrets["PERPLEXITY_API_KEY"]
 
 # Config
