@@ -28,11 +28,11 @@ from config import (
     OPENAPI_YAML_PATH,
     BASE_URL_OVERRIDE,
     CSV_OUTPUT,
-    PERPLEXITY_API_KEY,
     USE_LLM_VALIDATION,
     KNOWLEDGE_FOLDER
 )
-
+import streamlit as st
+PERPLEXITY_API_KEY = st.secrets["PERPLEXITY_API_KEY"]
 
 def extract_error_code_mapping(openapi_spec: Dict[str, Any]) -> Dict[str, str]:
     # Your existing code (unchanged)

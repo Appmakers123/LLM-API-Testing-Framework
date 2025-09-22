@@ -8,8 +8,7 @@ from config import CSV_OUTPUT, KNOWLEDGE_FOLDER, OPENAPI_YAML_PATH
 from openapi.loader import load_openapi, pick_base_url
 from openapi.operations import collect_operations
 
-my_key = st.secrets["PERPLEXITY_API_KEY"]
-
+PERPLEXITY_API_KEY = st.secrets["PERPLEXITY_API_KEY"]
 # Config
 CSV_FILE = CSV_OUTPUT
 KB_FOLDER = KNOWLEDGE_FOLDER
