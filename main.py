@@ -267,10 +267,15 @@ def select_and_run_apis(operations: List[Dict]) -> None:
 def answer_using_kb_and_perplexity(query: str) -> str:
     kb = KnowledgeBase(KNOWLEDGE_FOLDER)
     relevant_chunks = kb.query(query)
+    context = '---\n'.join(relevant_chunks)
     prompt = (
-        "You are a helpful assistant. Use the following knowledge base information to answer the question.\n\n"
-        f"Context:\n{'---\n'.join(relevant_chunks)}\n\nQuestion:\n{query}\n\nAnswer:"
+    "You are a helpful assistant. Use the following knowledge base information to answer the question.\n\n"
+    f"Context:\n{context}\n\nQuestion:\n{query}\n\nAnswer:"
     )
+
+    # prompt = (
+    #     "You are a helpful assistant. Use the following knowledge base information to answer the question.\n\n"
+    #     f"Context:\n{'---\n'.join(relevant_chunks)}\n\nQuestion:\n{query}\n\nAnswer:")
     response = chat.invoke(prompt)
     return response.content if hasattr(response, "content") else str(response)
 
